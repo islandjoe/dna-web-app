@@ -32,6 +32,7 @@ module.exports = {
     publicPath: 'http://localhost:3000/dist/',
     hotOnly: true
   },
+  devtool: '#sourcemap',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ]
