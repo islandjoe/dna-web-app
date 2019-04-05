@@ -14,8 +14,12 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
@@ -27,5 +31,9 @@
     "react-hot-loader": "^4.8.2",
     "styled-components": "^4.2.0",
     "webpack": "^4.29.6"
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupFiles": ["./src/setupTests.js"]
   }
 }
