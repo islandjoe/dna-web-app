@@ -4,7 +4,7 @@
   "description": "SPA for DNA subscribers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --mode development"
   },
   "author": "Arthur Kho Caayon",
