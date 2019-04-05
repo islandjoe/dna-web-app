@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Fragment>
+  <h3>
+    Home Broadband
+  </h3>
+  <table>
+    <styled.tbody>
+      <tr>
+        <styled.th>
+          User name
+        </styled.th>
+        <styled.td>
+          i.am@island.joe
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.th>
+          Address
+        </styled.th>
+        <styled.td>
+          727 Bristol Street, Trexlertown, Arizona, 7038
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.th>
+          Subscription type
+        </styled.th>
+        <styled.td>
+          1 year
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.th>
+          Monthly price
+        </styled.th>
+        <styled.td>
+          26€
+        </styled.td>
+      </tr>
+    </styled.tbody>
+  </table>
+</Fragment>
+`;
