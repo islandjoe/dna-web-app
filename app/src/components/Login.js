@@ -1,11 +1,36 @@
 import React from 'react'
-import './Login.css'
+import styled from 'styled-components'
+
+const USER_ID = 'userid',
+      PASSWORD = 'password'
+
+const UserId = styled.input.attrs({ type: 'text', name: USER_ID })`
+`
+const Password = styled.input.attrs({ type: 'password', name: PASSWORD })`
+`
+const LoginButton = styled.input.attrs({ type: 'submit', value: 'Log in' })`
+`
+const Label = styled.label`
+  display: block;
+`
+
+const UserIdField =()=> (
+  <Label htmlFor={ USER_ID }>
+    User ID: <UserId/>
+  </Label>
+)
+
+const PasswordField =()=> (
+  <Label htmlFor={ PASSWORD }>
+    Password: <Password/>
+  </Label>
+)
 
 const Login =()=> (
   <form className='Login'>
-    <label htmlFor='userid'>User ID: <input type='text' name='userid'/></label>
-    <label htmlFor='password'>Password: <input type='password' name='password'/></label>
-    <input type='submit' value='Log in'/>
+    <UserIdField/>
+    <PasswordField/>
+    <LoginButton/>
   </form>
 )
 
