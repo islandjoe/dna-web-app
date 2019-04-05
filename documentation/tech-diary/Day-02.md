@@ -1,4 +1,4 @@
-### Login
+### Login Page
 ![](assets/log-in-page.png)
 
 Check if has fields:
@@ -6,10 +6,10 @@ Check if has fields:
 - Password
 - Submit button
 
-### Subscriptions
+### Subscriptions Page
 ![](assets/subscriptions-page.png)
 
-### Subscription Details
+### Subscription Details Page
 ![](assets/subscription-details-page.png)
 
 Check if has fields: 
