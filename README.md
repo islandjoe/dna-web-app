@@ -1,3 +1,6 @@
+- [Day 1](documentation/tech-diary/Day-01.md)
+- [Day 2](documentation/tech-diary/Day-02.md)
+
 **Task:** Create a DNA self-service login page/view and subscription listing.
  
 **Tools:** Use your own computer to create the solution using any tools that you see fit for the task. Please be prepared to showcase the solution on your own laptop.
