@@ -1,5 +1,5 @@
 ### Login
-/assets/log-in-page.png
+![](assets/log-in-page.png)
 
 Check if has fields:
 - User ID (email)
@@ -7,10 +7,10 @@ Check if has fields:
 - Submit button
 
 ### Subscriptions
-/assets/subscriptions-page.png
+![](assets/subscriptions-page.png)
 
 ### Subscription Details
-/assets/subscription-details-page.png
+![](assets/subscription-details-page.png)
 
 Check if has fields: 
 - User name
