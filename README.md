@@ -32,4 +32,4 @@ _Note1:_ If you decide to do bonus tasks, we will value quality over quantity. S
 
 _Note2:_ There will be additional task during the interview where you have to modify your solution on the spot. So make sure that your laptop has all of the required tools available for this.
  
-Submit the task by 16.4.2019 either with email to juho.lehtinen@dna.fi or if you wish publish it in your github repository and send me the link.
+Submit the task by 16.4.2019. If you wish publish it in your github repository and send the link.
