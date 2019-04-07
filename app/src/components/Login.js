@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 const USER_ID = 'userid',
       PASSWORD = 'password'
@@ -14,24 +15,22 @@ const Label = styled.label`
   display: block;
 `
 
-const UserIdField =()=> (
+const UserIdField =()=>
   <Label htmlFor={ USER_ID }>
     User ID: <UserId/>
   </Label>
-)
 
-const PasswordField =()=> (
+const PasswordField =()=>
   <Label htmlFor={ PASSWORD }>
     Password: <Password/>
   </Label>
-)
 
-const Login =()=> (
+const Login =()=>
   <form className='Login'>
     <UserIdField/>
     <PasswordField/>
     <LoginButton/>
+    <Link to='/your-account'>Your account</Link>
   </form>
-)
 
 export default Login

@@ -1,14 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
+import packages from '../data'
 
 const Label   = styled.th` text-align: left; `
 const Value   = styled.td` `
 const Details = styled.tbody` `
 
-const Subscription =()=> {
+const Subscription =(props)=> {
+
+  const pkg = packages.find(pkg=> pkg.id === props.match.params.id)
+
+  const {header, value} =(c=> {
+    if (c.type === 'Mobile') {
+      return {header: 'Mobile Number', value: '1234-5678'}
+    }
+    return {header: 'Address', value: 'Munkinpolku X Y Z, Helsinki'}
+  })(pkg)
+
   return (
     <>
-    <h3>Home Broadband</h3>
+    <h3>{ pkg.name }</h3>
+
     <table>
       <Details>
       <tr>
@@ -16,16 +28,16 @@ const Subscription =()=> {
         <Value>i.am@island.joe</Value>
       </tr>
       <tr>
-        <Label>Address</Label>
-        <Value>727 Bristol Street, Trexlertown, Arizona, 7038</Value>
+        <Label>{ header }</Label>
+        <Value>{ value }</Value>
       </tr>
       <tr>
         <Label>Subscription type</Label>
-        <Value>1 year</Value>
+        <Value>{ pkg.type }</Value>
       </tr>
       <tr>
         <Label>Monthly price</Label>
-        <Value>26€</Value>
+        <Value>{ `${pkg.price}€` }</Value>
       </tr>
       </Details>
     </table>
