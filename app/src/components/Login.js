@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const USER_ID = 'userid',
       PASSWORD = 'password'
@@ -25,8 +25,21 @@ const PasswordField =()=>
     Password: <Password/>
   </Label>
 
-const Login =()=>
-  <form className='Login'>
+const submitHandler =(props, event)=> {
+  event.preventDefault()
+
+  const user = event.target.children[0].children[0]
+  const pass = event.target.children[1].children[0]
+
+  if (user.value === 'ark' &&
+      pass.value === '123') {
+    console.log( 'Authenticated!' )
+    props.history.push('/your-account')
+  }
+}
+
+const Login =(props)=>
+  <form className='Login' onSubmit={()=> submitHandler(props, event) }>
     <UserIdField/>
     <PasswordField/>
     <LoginButton/>
