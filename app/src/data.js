@@ -35,4 +35,9 @@ export const subscribers = [
   },
 ]
 
+export const URL = {
+  subscriber: '/your-account',
+  subscription: '/subscription'
+}
+
 export default packages

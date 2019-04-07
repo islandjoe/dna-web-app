@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link, Redirect} from 'react-router-dom'
+import {URL} from '../data'
 
 const USER_ID = 'userid',
       PASSWORD = 'password'
@@ -25,25 +26,28 @@ const PasswordField =()=>
     Password: <Password/>
   </Label>
 
-const submitHandler =(props, event)=> {
-  event.preventDefault()
+const submitHandler =(props, e)=> {
+  e.preventDefault()
 
-  const user = event.target.children[0].children[0]
-  const pass = event.target.children[1].children[0]
+  const field = (name)=> e.target.elements[name]
+  const user = field( USER_ID )
+  const pass = field( PASSWORD )
 
   if (user.value === 'ark' &&
       pass.value === '123') {
     console.log( 'Authenticated!' )
-    props.history.push('/your-account')
+    props.history.push( URL.subscriber )
   }
+
 }
 
 const Login =(props)=>
-  <form className='Login' onSubmit={()=> submitHandler(props, event) }>
+  <form className='Login'
+      onSubmit={()=> submitHandler(props,event) }>
     <UserIdField/>
     <PasswordField/>
+
     <LoginButton/>
-    <Link to='/your-account'>Your account</Link>
   </form>
 
 export default Login

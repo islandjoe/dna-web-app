@@ -1,13 +1,13 @@
 import React from 'react'
 import Subscriber from './Subscriber'
 import {Link} from  'react-router-dom'
-import packages from '../data'
+import packages, {URL} from '../data'
 
 const Account =()=> {
 
   const pkgs = packages.map(pkg=>
     <li key={pkg.id}>
-      <Link to={ `/subscription/${pkg.id}` }>
+      <Link to={ `${URL.subscription}/${pkg.id}` }>
         {pkg.name}
       </Link>
     </li>
