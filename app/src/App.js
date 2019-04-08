@@ -14,7 +14,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>TODO: User auth using data from  `data.js`</h1>
         <Switch>
           <Route exact
               path='/'

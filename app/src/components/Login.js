@@ -1,6 +1,7 @@
 import React  from 'react'
 import styled from 'styled-components'
-import {URL} from '../data'
+import authenticated from '../Auth'
+import {URL}  from '../data'
 
 const USER_ID = 'userid',
       PASSWORD = 'password'
@@ -25,15 +26,14 @@ const PasswordField =()=>
     Password: <Password/>
   </Label>
 
-const submitHandler =(props, e)=> {
-  e.preventDefault()
+const submitHandler =(props,event)=> {
+  event.preventDefault()
 
-  const field = (name)=> e.target.elements[name]
-  const user = field( USER_ID )
-  const pass = field( PASSWORD )
+  const field = (name)=> event.target.elements[name]
+  const user = field( USER_ID ).value
+  const pass = field( PASSWORD ).value
 
-  if (user.value === 'ark' &&
-      pass.value === '123') {
+  if (authenticated( user, pass )) {
     console.log( 'Authenticated!' )
     props.history.push( URL.subscriber )
   }
@@ -42,7 +42,7 @@ const submitHandler =(props, e)=> {
 
 const Login =(props)=>
   <form className='Login'
-      onSubmit={()=> submitHandler(props,event) }>
+      onSubmit={()=> submitHandler( props, event ) }>
     <UserIdField/>
     <PasswordField/>
 

@@ -19,16 +19,19 @@ export const packages = [
 export const subscribers = [
   {
     userid:'lord.of.winterfell@geocities.com',
+    password: 'wheremyhead?',
     name:'Ned Stark',
     address:'Castle Winterfell',
     mobile:'123-4567'
   },{
     userid:'k.slayer67@aol.com',
+    password: 'wheremyhand?',
     name:'Jaime Lannister',
     address:'The Westerlands',
     mobile:'111-1666'
   },{
     userid:'jsnow38@hotmail.com',
+    password: 'huh?',
     name:'John Snow',
     address:'Castle Black',
     mobile:'100-000'
