@@ -1,6 +1,5 @@
-import React from 'react'
+import React  from 'react'
 import styled from 'styled-components'
-import {Link, Redirect} from 'react-router-dom'
 import {URL} from '../data'
 
 const USER_ID = 'userid',
