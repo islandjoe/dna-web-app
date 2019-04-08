@@ -10,18 +10,23 @@ const UserId = styled.input.attrs({ type: 'text', name: USER_ID })`
 `
 const Password = styled.input.attrs({ type: 'password', name: PASSWORD })`
 `
-const LoginButton = styled.input.attrs({ type: 'submit', value: 'Log in' })`
+export const LoginButton = styled.input.attrs({
+  type: 'submit',
+  value: 'Log in'
+ })`
 `
+LoginButton.displayName = 'LoginButton'
+
 const Label = styled.label`
   display: block;
 `
 
-const UserIdField =()=>
+export const UserIdField =()=>
   <Label htmlFor={ USER_ID }>
     User ID: <UserId/>
   </Label>
 
-const PasswordField =()=>
+export const PasswordField =()=>
   <Label htmlFor={ PASSWORD }>
     Password: <Password/>
   </Label>
@@ -40,13 +45,11 @@ const submitHandler =(props,event)=> {
 
 }
 
-const Login =(props)=>
+export const Login =(props)=>
   <form className='Login'
-      onSubmit={()=> submitHandler( props, event ) }>
+      onSubmit={()=> submitHandler(props, event)}>
     <UserIdField/>
     <PasswordField/>
 
     <LoginButton/>
   </form>
-
-export default Login
