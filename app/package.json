@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "watch": "jest --watch",
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --mode development"
   },
   "author": "Arthur Kho Caayon",
