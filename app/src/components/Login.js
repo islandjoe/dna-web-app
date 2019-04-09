@@ -45,7 +45,7 @@ const submitHandler =(props,event)=> {
 
 }
 
-export const Login =(props)=>
+export default Login =(props)=>
   <form className='Login'
       onSubmit={()=> submitHandler(props, event)}>
     <UserIdField/>
