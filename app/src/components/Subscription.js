@@ -1,48 +1,62 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styled from 'styled-components'
 import packages from '../data'
 
-const Label   = styled.th` text-align: left; `
-const Value   = styled.td` `
 const Details = styled.tbody` `
 
-const Subscription =(props)=> {
+class Subscription extends Component {
 
-  const pkg = packages.find(pkg=> pkg.id === props.match.params.id)
+  constructor(props) {
+    super(props)
 
-  const {header, value} =(c=> {
-    if (c.type === 'Mobile') {
-      return {header: 'Mobile Number', value: '1234-5678'}
+    this.state =
+    { package: {
+        name: 'Package Name',
+        type: 'Type',
+        price: 0
+      },
+      subscriber: {
+        userid: 'Email'
+      }
     }
-    return {header: 'Address', value: 'Munkinpolku X Y Z, Helsinki'}
-  })(pkg)
+  }
 
-  return (
-    <>
-    <h3>{ pkg.name }</h3>
+  render() {
+    return (
+      <>
+      <header>
+        {this.state.package.name}
+      </header>
 
-    <table>
-      <Details>
-      <tr>
-        <Label>User name</Label>
-        <Value>i.am@island.joe</Value>
-      </tr>
-      <tr>
-        <Label>{ header }</Label>
-        <Value>{ value }</Value>
-      </tr>
-      <tr>
-        <Label>Subscription type</Label>
-        <Value>{ pkg.type }</Value>
-      </tr>
-      <tr>
-        <Label>Monthly price</Label>
-        <Value>{ `${pkg.price}€` }</Value>
-      </tr>
-      </Details>
-    </table>
-    </>
-  )
+      <table>
+        <Details>
+        <tr>
+          <th>User Id</th>
+          <td className='UserId'>
+            { this.state.subscriber.userid }
+          </td>
+        </tr>
+        <tr>
+          <th>{/* header*/ }</th>
+          <td>{/* value */}</td>
+        </tr>
+        <tr>
+          <th>Subscription Type</th>
+          <td className='SubscriptionType'>
+            { this.state.package.type }
+          </td>
+        </tr>
+        <tr>
+          <th>Monthly price</th>
+          <td className='MonthlyPrice'>
+            { `${this.state.package.price}€` }
+          </td>
+        </tr>
+        </Details>
+      </table>
+      </>
+    )
+  }
 }
 
 export default Subscription
