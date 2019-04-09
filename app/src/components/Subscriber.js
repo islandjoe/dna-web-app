@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Name = styled.h1` `
-
 const Subscriber =()=> {
+  const name = 'John Snow'
+
   return (
-    <Name>Arthur Kho Caayon</Name>
+    <h2>{ name }</h2>
   )
 }
 
