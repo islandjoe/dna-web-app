@@ -3,7 +3,7 @@ import Subscriber from './Subscriber'
 import {Link} from  'react-router-dom'
 import packages, {URL} from '../data'
 
-const Account =()=> {
+const AccountPage =()=> {
 
   const pkgs = packages.map(pkg=>
     <li key={pkg.id}>
@@ -27,4 +27,4 @@ const Account =()=> {
   )
 }
 
-export default Account
+export default AccountPage

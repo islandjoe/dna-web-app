@@ -8,7 +8,9 @@ it('should render', ()=> {
   expect( component ).toBeTruthy()
 })
 
+//HOWTO:
 it('should display the subscriber\'s name', ()=> {
-  expect( component.childAt(0).text() ).toBe('John Snow')
-  // console.log( component.childAt(0) )
+  const name = ''
+
+  expect( component.text() ).toBe( name )
 })

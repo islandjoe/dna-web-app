@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {hot} from 'react-hot-loader'
 import {Route, Switch} from  'react-router-dom'
 
-import Account from './components/Account'
+import AccountPage from './components/AccountPage'
 import Login   from './components/Login'
 import {URL}   from './data'
 
@@ -20,7 +20,7 @@ class App extends Component {
               component={ Login }/>
           <Route exact
               path={ URL.subscriber }
-              component={ Account }/>
+              component={ AccountPage }/>
           <Route
               path={ `${URL.subscription}/:id` }
               component={ Subscription }/>

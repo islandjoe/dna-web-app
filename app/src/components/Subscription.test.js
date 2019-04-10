@@ -11,7 +11,6 @@ it('should render', ()=> {
   expect( component.exists() ).toBe(true)
 })
 
-
 it('should display the subscription package name', ()=> {
     expect( component.find('header').text() )
     .toBe(  subscriptionPackage.name )

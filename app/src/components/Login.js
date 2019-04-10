@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, {Component}  from 'react'
 import styled from 'styled-components'
 import authenticated from '../Auth'
 import {URL}  from '../data'
@@ -17,39 +17,77 @@ export const LoginButton = styled.input.attrs({
 `
 LoginButton.displayName = 'LoginButton'
 
+
 const Label = styled.label`
   display: block;
 `
 
-export const UserIdField =()=>
+export const UserIdField =(props)=>
   <Label htmlFor={ USER_ID }>
-    User ID: <UserId/>
+    User ID: <UserId { ...props  }/>
   </Label>
 
-export const PasswordField =()=>
+export const PasswordField =(props)=>
   <Label htmlFor={ PASSWORD }>
-    Password: <Password/>
+    Password: <Password { ...props }/>
   </Label>
 
-const submitHandler =(props,event)=> {
-  event.preventDefault()
+class Login extends Component {
 
-  const field = (name)=> event.target.elements[name]
-  const user = field( USER_ID ).value
-  const pass = field( PASSWORD ).value
+  constructor(props) {
+    super(props)
 
-  if (authenticated( user, pass )) {
-    console.log( 'Authenticated!' )
-    props.history.push( URL.subscriber )
+    this.state = {
+      userid: '',
+      password: ''
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleUserId = this.handleUserId.bind(this)
+    this.handlePassword = this.handlePassword.bind(this)
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+
+    console.log( this.state )
+
+    const {userid, password}  = this.state
+
+    if (authenticated( userid, password )) {
+      this.props.history.push( URL.subscriber )
+    }
+
+    //TODO: Maybe return/throw something here
+  }
+
+  handleUserId(event) {
+    this.setState({
+      userid: event.target.value
+    })
+  }
+
+  handlePassword(event) {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+  render() {
+    return (
+      <form className='Login'
+          onSubmit={ this.handleSubmit }>
+        <UserIdField
+            value={ this.state.userid }
+            onChange={ this.handleUserId }/>
+        <PasswordField
+           onChange={ this.handlePassword }/>
+
+        <LoginButton/>
+      </form>
+    )
   }
 
 }
 
-export default Login =(props)=>
-  <form className='Login'
-      onSubmit={()=> submitHandler(props, event)}>
-    <UserIdField/>
-    <PasswordField/>
-
-    <LoginButton/>
-  </form>
+export default Login

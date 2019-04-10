@@ -1,12 +1,29 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {Component} from 'react'
 
-const Subscriber =()=> {
-  const name = 'John Snow'
+class Subscriber extends Component {
 
-  return (
-    <h2>{ name }</h2>
-  )
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      userid: '',
+      name: '',
+      address: '',
+      mobileNumber: '',
+      subscriptions: []
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      userid: this.props.userid
+    })
+  }
+  render() {
+    return (
+      <h2>{ this.state.name }</h2>
+    )
+  }
 }
 
 export default Subscriber
