@@ -11,16 +11,37 @@ import Subscription from './components/Subscription'
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      userid: ''
+    }
+
+    this.userId = this.userId.bind(this)
+  }
+
+  userId(id) {
+    this.setState({ userid: id })
+  }
+
   render() {
     return (
       <div className="App">
         <Switch>
           <Route exact
               path='/'
-              component={ Login }/>
+              render={(props)=>
+                <Login { ...props } userId={ this.userId } />
+              }
+          />
           <Route exact
               path={ URL.subscriber }
-              component={ AccountPage }/>
+              render={(props)=>
+                <AccountPage {...props}
+                  userid={ this.state.userid }/>
+              }
+          />
           <Route
               path={ `${URL.subscription}/:id` }
               component={ Subscription }/>

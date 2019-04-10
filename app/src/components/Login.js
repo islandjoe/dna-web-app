@@ -1,7 +1,9 @@
 import React, {Component}  from 'react'
+import {Route} from 'react-router-dom'
 import styled from 'styled-components'
-import authenticated from '../Auth'
+import authenticate from '../Auth'
 import {URL}  from '../data'
+import AccountPage from './AccountPage'
 
 const USER_ID = 'userid',
       PASSWORD = 'password'
@@ -32,6 +34,8 @@ export const PasswordField =(props)=>
     Password: <Password { ...props }/>
   </Label>
 
+
+
 class Login extends Component {
 
   constructor(props) {
@@ -50,15 +54,12 @@ class Login extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    console.log( this.state )
-
     const {userid, password}  = this.state
 
-    if (authenticated( userid, password )) {
+    if (authenticate( userid, password )) {
+      this.props.userId( userid )
       this.props.history.push( URL.subscriber )
     }
-
-    //TODO: Maybe return/throw something here
   }
 
   handleUserId(event) {

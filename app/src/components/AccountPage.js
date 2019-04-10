@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Subscriber from './Subscriber'
 import {Link} from  'react-router-dom'
-import packages, {URL} from '../data'
+import {URL, subscribers} from '../data'
 
-const AccountPage =()=> {
+const AccountPage =(props)=> {
 
-  const pkgs = packages.map(pkg=>
+
+  const details = subscribers.find(s=> s.userid === props.userid)
+
+  const packages = details.subscriptions.map(pkg=>
     <li key={pkg.id}>
       <Link to={ `${URL.subscription}/${pkg.id}` }>
         {pkg.name}
@@ -15,11 +18,11 @@ const AccountPage =()=> {
 
   return (
     <div>
-      <Subscriber/>
+      <Subscriber userid={ props.userid }/>
       <div>
         <h3>Your subscriptions</h3>
         <ul>
-          {pkgs}
+          { packages }
         </ul>
       </div>
 
