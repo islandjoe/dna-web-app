@@ -17,6 +17,8 @@ class Subscription extends Component {
       subscriber: {
         userid: ''
       }
+      package: { id: '', name:'', type:'', price:0 },
+      subscriber: { userid: '' }
     }
   }
 
@@ -24,12 +26,15 @@ class Subscription extends Component {
     const packageId = this.props.match.params.id
     const subscription = packages.find((p)=>
       p.id === packageId
+    const subscription = packages.find((pkg)=>
+      pkg.id === packageId
     )
 
     if (subscription) {
       this.setState({
         package: { ...subscription }
       })
+      this.setState({ package: {...subscription} })
     }
 
     const subscriber = subscribers.find((s)=> s.userid ===  this.props.userid)
@@ -38,6 +43,7 @@ class Subscription extends Component {
       this.setState({
         subscriber: { ...subscriber }
       })
+      this.setState({ subscriber: {...subscriber} })
     }
 
   } //componentDidMount
