@@ -23,7 +23,7 @@ export const subscribers = [
     name:'Ned Stark',
     address:'Castle Winterfell',
     mobile:'123-4567',
-    subscriptions: [ ...packages ]
+    subscriptions: [ packages[1] ]
   },{
     userid:'k.slayer67@aol.com',
     password: 'wheremyhand?',
@@ -37,7 +37,7 @@ export const subscribers = [
     name:'John Snow',
     address:'Castle Black',
     mobile:'100-000',
-    subscriptions: [ packages[1] ]
+    subscriptions: [ ...packages ]
   },
 ]
 

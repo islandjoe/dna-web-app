@@ -6,8 +6,8 @@ import AccountPage from './components/AccountPage'
 import Login   from './components/Login'
 import {URL}   from './data'
 
-import './App.css'
 import Subscription from './components/Subscription'
+import './App.css'
 
 class App extends Component {
 
@@ -18,10 +18,10 @@ class App extends Component {
       userid: ''
     }
 
-    this.userId = this.userId.bind(this)
+    this.setUserId = this.setUserId.bind(this)
   }
 
-  userId(id) {
+  setUserId(id) {
     this.setState({ userid: id })
   }
 
@@ -32,19 +32,22 @@ class App extends Component {
           <Route exact
               path='/'
               render={(props)=>
-                <Login { ...props } userId={ this.userId } />
+                <Login { ...props } userId={ this.setUserId } />
               }
           />
           <Route exact
               path={ URL.subscriber }
               render={(props)=>
                 <AccountPage {...props}
-                  userid={ this.state.userid }/>
+                    userid={ this.state.userid }/>
               }
           />
           <Route
               path={ `${URL.subscription}/:id` }
-              component={ Subscription }/>
+              render={(props)=>
+                  <Subscription { ...props }
+                      userid={ this.state.userid } /> }
+          />
         </Switch>
       </div>
     )

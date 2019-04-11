@@ -8,22 +8,19 @@ class Subscriber extends Component {
 
     this.state = {
       userid: props.userid,
-      name: ' ',
-      address: ' ',
-      mobileNumber: ' ',
+      name: '',
+      address: '',
+      mobileNumber: '',
       subscriptions: []
     }
   }
 
   componentDidMount() {
-    const my = subscribers.find((s)=> s.userid === this.state.userid)
+    const subscriber = subscribers.find((s)=> s.userid === this.state.userid)
 
-    this.setState({
-      name:    my.name,
-      address: my.address,
-      mobile:  my.mobile,
-      subscriptions: my.subscriptions
-    })
+    if (subscriber) {
+      this.setState({ ...subscriber })
+    }
   }
 
   render() {
