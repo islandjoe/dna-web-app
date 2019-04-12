@@ -17,18 +17,13 @@ class Subscription extends Component {
       subscriber: {
         userid: ''
       }
-      package: { id: '', name:'', type:'', price:0 },
-      subscriber: { userid: '' }
     }
   }
 
   componentDidMount() {
     const packageId = this.props.match.params.id
     const subscription = packages.find((p)=>
-      p.id === packageId
-    const subscription = packages.find((pkg)=>
-      pkg.id === packageId
-    )
+      p.id === packageId)
 
     if (subscription) {
       this.setState({
@@ -54,15 +49,6 @@ class Subscription extends Component {
       subscriber: user
     } = this.state
 
-    const [label, contact] =(()=> {
-      if (bundle.type === 'Mobile') {
-        return ['Mobile Number', user.mobile]
-      }
-      else {
-        return ['Address', user.address]
-      }
-    })()
-
     return (
       <>
       <header>
@@ -77,10 +63,19 @@ class Subscription extends Component {
             { user.userid }
           </td>
         </tr>
-        <tr>
-          <th>{ label }</th>
-          <td>{ contact }</td>
-        </tr>
+        {// Hard-code this comparison for now:
+          bundle.type == 'Mobile'
+        ?
+          <tr>
+            <th>Mobile</th>
+            <td className='Mobile'>{ user.mobile }</td>
+          </tr>
+          :
+          <tr>
+            <th>Address</th>
+            <td className='Address'>{ user.address }</td>
+          </tr>
+        }
         <tr>
           <th>Subscription Type</th>
           <td className='SubscriptionType'>
