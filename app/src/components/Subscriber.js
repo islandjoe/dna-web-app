@@ -7,26 +7,25 @@ class Subscriber extends Component {
     super(props)
 
     this.state = {
-      userid: props.userid,
-      name: '',
-      address: '',
-      mobileNumber: '',
-      subscriptions: []
+      userid:'', name:'', address:'', mobileNumber:'', subscriptions: []
     }
+
   }
 
   componentDidMount() {
-    const subscriber = subscribers.find((s)=> s.userid === this.state.userid)
+    const subscriber = subscribers.find((s)=> s.userid === this.props.userid)
 
     if (subscriber) {
       this.setState({ ...subscriber })
     }
+
   }
 
   render() {
     return (
       <h2>{ this.state.name }</h2>
     )
+
   }
 }
 

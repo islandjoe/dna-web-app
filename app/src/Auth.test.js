@@ -1,23 +1,23 @@
 import authenticate from './Auth'
 import {subscribers} from './data'
 
-const {userid, password} = subscribers[0]
-
 it('should authenticate legit users', ()=> {
-
-    expect( authenticate( userid, password ) )
-        .toBeTruthy()
+  expect( authenticate( userid, password ) )
+  .toBe( true )
 })
 
 it('should reject non-subscribers', ()=> {
-    expect( authenticate( 'whitewalker', 'www'))
-        .toBeFalsy()
+  expect( authenticate( 'whitewalker', 'www'))
+  .toBe( rejected )
 })
 
 it('should reject wrong userid or password', ()=> {
-    expect( authenticate( userid, 'immahaxoryuuu' ) )
-      .toBeFalsy()
+  expect( authenticate( userid, 'immahaxoryuuu' ) )
+  .toBe( rejected )
 
-    expect( authenticate( 'no@such.user', password ) )
-      .toBeFalsy()
+  expect( authenticate( 'no@such.user', password ) )
+  .toBe( rejected )
 })
+
+const rejected = !true
+const {userid, password} = subscribers[0]
