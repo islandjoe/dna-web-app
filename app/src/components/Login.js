@@ -8,10 +8,7 @@ class Login extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      userid: '',
-      password: ''
-    }
+    this.state = { userid:'', password:'' }
 
     this.handleSubmit   = this.handleSubmit.bind(this)
     this.handleUserId   = this.handleUserId.bind(this)
@@ -31,15 +28,15 @@ class Login extends Component {
   }
 
   handleUserId(event) {
-    this.setState({
-      userid: event.target.value
-    })
+    const _fromInput = event.target
+
+    this.setState({ userid: _fromInput.value })
   }
 
   handlePassword(event) {
-    this.setState({
-      password: event.target.value
-    })
+    const _fromInput = event.target
+
+    this.setState({ password: _fromInput.value })
   }
 
   render() {
@@ -68,8 +65,6 @@ export const LoginButton = styled.input.attrs({
  })`
 `
 LoginButton.displayName = 'LoginButton'
-
-
 const Label = styled.label`
   display: block;
 `

@@ -8,15 +8,8 @@ class Subscription extends Component {
     super(props)
 
     this.state = {
-      package: {
-        id:    '',
-        name:  '',
-        type:  '',
-        price: 0
-      },
-      subscriber: {
-        userid: ''
-      }
+      package:    { id:'', name:'', type:'', price:0 },
+      subscriber: { userid:'' }
     }
   }
 
@@ -35,19 +28,13 @@ class Subscription extends Component {
     const subscriber = subscribers.find((s)=> s.userid ===  this.props.userid)
 
     if (subscriber) {
-      this.setState({
-        subscriber: { ...subscriber }
-      })
       this.setState({ subscriber: {...subscriber} })
     }
 
   } //componentDidMount
 
    render() {
-    const {
-      package: bundle,
-      subscriber: user
-    } = this.state
+    const { package: bundle, subscriber: user } = this.state
 
     return (
       <>
@@ -65,7 +52,7 @@ class Subscription extends Component {
         </tr>
         {// Hard-code this comparison for now:
           bundle.type == 'Mobile'
-        ?
+          ?
           <tr>
             <th>Mobile</th>
             <td className='Mobile'>{ user.mobile }</td>
