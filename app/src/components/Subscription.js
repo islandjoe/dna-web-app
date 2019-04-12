@@ -8,6 +8,15 @@ class Subscription extends Component {
     super(props)
 
     this.state = {
+      package: {
+        id:    '',
+        name:  '',
+        type:  '',
+        price: 0
+      },
+      subscriber: {
+        userid: ''
+      }
       package: { id: '', name:'', type:'', price:0 },
       subscriber: { userid: '' }
     }
@@ -15,17 +24,25 @@ class Subscription extends Component {
 
   componentDidMount() {
     const packageId = this.props.match.params.id
+    const subscription = packages.find((p)=>
+      p.id === packageId
     const subscription = packages.find((pkg)=>
       pkg.id === packageId
     )
 
     if (subscription) {
+      this.setState({
+        package: { ...subscription }
+      })
       this.setState({ package: {...subscription} })
     }
 
     const subscriber = subscribers.find((s)=> s.userid ===  this.props.userid)
 
     if (subscriber) {
+      this.setState({
+        subscriber: { ...subscriber }
+      })
       this.setState({ subscriber: {...subscriber} })
     }
 
@@ -36,6 +53,15 @@ class Subscription extends Component {
       package: bundle,
       subscriber: user
     } = this.state
+
+    const [label, contact] =(()=> {
+      if (bundle.type === 'Mobile') {
+        return ['Mobile Number', user.mobile]
+      }
+      else {
+        return ['Address', user.address]
+      }
+    })()
 
     return (
       <>
@@ -51,20 +77,10 @@ class Subscription extends Component {
             { user.userid }
           </td>
         </tr>
-        {//Hard-coding this for now:
-          bundle.type === 'Mobile'
-          ?
-          <tr>
-            <th>Mobile</th>
-            <td>{ user.mobile }</td>
-          </tr>
-          :
-          <tr>
-            <th>Address</th>
-            <td>{ user.address }</td>
-          </tr>
-        }
-
+        <tr>
+          <th>{ label }</th>
+          <td>{ contact }</td>
+        </tr>
         <tr>
           <th>Subscription Type</th>
           <td className='SubscriptionType'>
