@@ -1,7 +1,7 @@
 import React, {Component}  from 'react'
-import styled from 'styled-components'
 import authenticate from '../Auth'
 import {URL}  from '../data'
+import {Form, Button} from 'semantic-ui-react'
 
 class Login extends Component {
 
@@ -41,42 +41,34 @@ class Login extends Component {
 
   render() {
     return (
-      <form className='Login' onSubmit={ this.handleSubmit }>
+      <Form className='Login' onSubmit={ this.handleSubmit }>
         <UserIdField
             value={ this.state.userid }
               onChange={ this.handleUserId }/>
         <PasswordField onChange={ this.handlePassword }/>
 
-        <LoginButton/>
-      </form>
+        <Button type='submit' className='LoginButton'>Log In</Button>
+      </Form>
     )
   }
 
 }
 
 const USER_ID = 'userid', PASSWORD = 'password'
-const UserId = styled.input.attrs({ type: 'text', name: USER_ID })`
-`
-const Password = styled.input.attrs({ type: 'password', name: PASSWORD })`
-`
-export const LoginButton = styled.input.attrs({
-  type: 'submit',
-  value: 'Log in'
- })`
-`
-LoginButton.displayName = 'LoginButton'
-const Label = styled.label`
-  display: block;
-`
 
-export const UserIdField =(props)=>
-  <Label htmlFor={ USER_ID }>
-    User ID: <UserId { ...props  }/>
-  </Label>
+export const UserIdField =(props)=> (
+  <Form.Field>
+  <label htmlFor={ USER_ID }>User ID:</label>
+  <input placeholder='email'/>
+  </Form.Field>
+)
 
-export const PasswordField =(props)=>
-  <Label htmlFor={ PASSWORD }>
-    Password: <Password { ...props }/>
-  </Label>
+
+export const PasswordField =(props)=> (
+  <Form.Field>
+  <label htmlFor={ PASSWORD }>Password:</label>
+  <input type='password'/>
+  </Form.Field>
+)
 
 export default Login

@@ -5,7 +5,7 @@ import Login, {LoginButton} from './Login.js'
 const loginForm = shallow( <Login/> )
 
 it('should contain 3 children components', ()=> {
-  const form = loginForm.find('form.Login')
+  const form = loginForm.find('Form.Login')
   expect(form.children().length).toBe(3)
 })
 
@@ -19,9 +19,8 @@ it('should contain a <PasswordField/>', ()=> {
   expect( field.exists() ).toBe(true)
 })
 
-it('should contain a <LoginButton/>', ()=> {
-  const child = loginForm.childAt(2)
-  const button = child.find('LoginButton')
+it('should contain a login button', ()=> {
+  const button = loginForm.find('Button.LoginButton')
 
-  expect( button.equals(<LoginButton/>) ).toBe(true)
+  expect( button.exists() ).toBe(true)
 })
