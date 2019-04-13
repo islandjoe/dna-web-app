@@ -8,9 +8,8 @@ const AccountPage =(props)=> {
   const details = subscribers.find(s=> s.userid === props.userid)
   const bundle = details.subscriptions.map(pkg=>
     <List.Item key={ pkg.id }>
-      <Image size='tiny'
-            {/*TODO: Handle if there's no avatar */}
-            src={ `/images/avatar-${pkg.id}.jpeg`}
+      {/* TODO: Handle if there's no avatar */}
+      <Image size='tiny' src={ `/images/avatar-${pkg.id}.jpeg`}
             verticalAlign='top' />
       <List.Content>
         <Link to={ `${URL.subscription}/${pkg.id}` }>
