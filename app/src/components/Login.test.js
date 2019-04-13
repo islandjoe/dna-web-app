@@ -9,13 +9,13 @@ it('should contain 3 children components', ()=> {
   expect(form.children().length).toBe(3)
 })
 
-it('should contain a <UserIdField/>', ()=> {
-  const field = loginForm.find('UserIdField')
+it('should contain UserIdField', ()=> {
+  const field = loginForm.find('.UserIdField')
   expect( field.exists() ).toBe(true)
 })
 
-it('should contain a <PasswordField/>', ()=> {
-  const field = loginForm.find('PasswordField')
+it('should contain PasswordField', ()=> {
+  const field = loginForm.find('.PasswordField')
   expect( field.exists() ).toBe(true)
 })
 

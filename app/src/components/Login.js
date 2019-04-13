@@ -19,6 +19,7 @@ class Login extends Component {
     event.preventDefault()
 
     const {userid, password} = this.state
+
     const {userId: getUserId, history} = this.props
 
     if (authenticate( userid, password )) {
@@ -27,7 +28,7 @@ class Login extends Component {
     }
   }
 
-  handleUserId(event) {
+  handleUserId(event) { console.log( event )
     const _fromInput = event.target
 
     this.setState({ userid: _fromInput.value })
@@ -42,10 +43,16 @@ class Login extends Component {
   render() {
     return (
       <Form className='Login' onSubmit={ this.handleSubmit }>
-        <UserIdField
-            value={ this.state.userid }
+        <Form.Field className='UserIdField'>
+          <label>User ID:</label>
+          <input placeholder='email' value={ this.state.userid }
               onChange={ this.handleUserId }/>
-        <PasswordField onChange={ this.handlePassword }/>
+          </Form.Field>
+
+          <Form.Field className='PasswordField'>
+            <label>Password:</label>
+            <input type='password' onChange={ this.handlePassword }/>
+          </Form.Field>
 
         <Button type='submit' className='LoginButton'>Log In</Button>
       </Form>
@@ -53,22 +60,5 @@ class Login extends Component {
   }
 
 }
-
-const USER_ID = 'userid', PASSWORD = 'password'
-
-export const UserIdField =(props)=> (
-  <Form.Field>
-  <label htmlFor={ USER_ID }>User ID:</label>
-  <input placeholder='email'/>
-  </Form.Field>
-)
-
-
-export const PasswordField =(props)=> (
-  <Form.Field>
-  <label htmlFor={ PASSWORD }>Password:</label>
-  <input type='password'/>
-  </Form.Field>
-)
 
 export default Login
