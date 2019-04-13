@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import styled from 'styled-components'
+import {Table, Header} from 'semantic-ui-react'
 import {packages, subscribers} from '../data'
 
 class Subscription extends Component {
@@ -38,50 +38,52 @@ class Subscription extends Component {
 
     return (
       <>
-      <header>
+      <Header>
         { bundle.name }
-      </header>
+      </Header>
 
-      <table>
-        <Details>
-        <tr>
-          <th>User Id</th>
-          <td className='UserId'>
-            { user.userid }
-          </td>
-        </tr>
-        {// Hard-code this comparison for now:
-          bundle.type == 'Mobile'
-          ?
-          <tr>
-            <th>Mobile</th>
-            <td className='Mobile'>{ user.mobile }</td>
-          </tr>
-          :
-          <tr>
-            <th>Address</th>
-            <td className='Address'>{ user.address }</td>
-          </tr>
-        }
-        <tr>
-          <th>Subscription Type</th>
-          <td className='SubscriptionType'>
-            { bundle.type }
-          </td>
-        </tr>
-        <tr>
-          <th>Monthly price</th>
-          <td className='MonthlyPrice'>
-            { `${ bundle.price }€` }
-          </td>
-        </tr>
-        </Details>
-      </table>
+      <Table>
+        <Table.Body>
+          <Table.Row>
+            <Table.HeaderCell scope='row'>User Id</Table.HeaderCell>
+            <Table.Cell>
+              <span className='UserId'>{ user.userid }</span>
+            </Table.Cell>
+          </Table.Row>
+          {// Hard-code this comparison for now:
+            bundle.type == 'Mobile'
+            ?
+            <Table.Row>
+              <Table.HeaderCell scope='row'>Mobile</Table.HeaderCell>
+              <Table.Cell>
+                <span className='Mobile'>{ user.mobile }</span>
+              </Table.Cell>
+            </Table.Row>
+            :
+            <Table.Row>
+              <Table.HeaderCell scope='row'>Address</Table.HeaderCell>
+              <Table.Cell>
+                <span className='Address'>{ user.address }</span>
+              </Table.Cell>
+            </Table.Row>
+          }
+          <Table.Row>
+            <Table.HeaderCell scope='row'>Subscription Type</Table.HeaderCell>
+            <Table.Cell>
+              <span className='SubscriptionType'>{ bundle.type }</span>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.HeaderCell scope='row'>Monthly price</Table.HeaderCell>
+            <Table.Cell>
+              <span className='MonthlyPrice'>{ `${ bundle.price }€` }</span>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
       </>
     )
   } //render
 } //Subscription
-
-const Details = styled.tbody` `
 
 export default Subscription
