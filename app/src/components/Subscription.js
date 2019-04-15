@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Table, Header} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+
 import {packages, subscribers} from '../data'
 
 class Subscription extends Component {
@@ -82,5 +84,12 @@ class Subscription extends Component {
     )
   } //render
 } //Subscription
+
+Subscription.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.objectOf( PropTypes.string )
+  }),
+  userid: PropTypes.string
+}
 
 export default Subscription

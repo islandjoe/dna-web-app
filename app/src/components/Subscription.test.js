@@ -3,16 +3,18 @@ import {shallow, mount} from  'enzyme'
 import Subscription from './Subscription'
 import {packages, subscribers} from  '../data'
 
-const _johnSnow = subscribers[2]
+const _johnSnow   = subscribers[2]
 const _4g_rajaton = packages[1]
-const subscriptionId = { params: { id: _4g_rajaton.id } }
+const _subscriptionId = { params: { id: _4g_rajaton.id } }
 
-const subscription =(depth = shallow)=>
-    depth( <Subscription
-              match={ subscriptionId }
-              userid={ _johnSnow.userid }/>
-          )
-
+const subscription =(depth = shallow)=> (
+    depth(
+      <Subscription
+          match={ _subscriptionId }
+          userid={ _johnSnow.userid }
+          />
+    )
+)
 
 describe('Subscription details:', ()=> {
 
@@ -52,7 +54,7 @@ describe('Subscriber\'s details:', ()=> {
     expect( userid ).toBe( same )
   })
 
-  it('The contact detail is the subcriber\'s mobile number', ()=> {
+  it('The contact detail is the subcriber\'s mobile number, not the address', ()=> {
     const [number, same] = [subscription(mount).find('.Mobile').text(), _johnSnow.mobile]
     const address = subscription().find('.Address')
 
