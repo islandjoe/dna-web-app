@@ -21,6 +21,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5",
+    "jest-transform-stub": "^2.0.0",
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
@@ -43,6 +44,10 @@
     ],
     "setupFiles": [
       "./src/setupTests.js"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    }
   }
 }

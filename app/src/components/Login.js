@@ -13,7 +13,7 @@ class Login extends Component {
       password:'',
       isValid: {
         email: !true,
-      // isValidPassword: false
+        isValidPassword: !true
       }
     }
 
@@ -27,12 +27,15 @@ class Login extends Component {
     event.preventDefault()
 
     const {userid, password} = this.state
+    const {userId: userIdIs, history: path} = this.props
+    const authd = authenticate( userid, password )
 
-    const {userId: getUserId, history} = this.props
-
-    if (authenticate( userid, password )) {
-      getUserId( userid )
-      history.push( URL.subscriber )
+    if ( authd.subscriber && authd.password ) {
+      userIdIs( userid )
+      path.push( URL.subscriber )
+    }
+    else if (!authd.password) {
+      this.setState({ isValid: {password: !false} })
     }
   }
 
@@ -75,7 +78,9 @@ class Login extends Component {
               />
           </Form.Field>
 
-          <Form.Field className='PasswordField' disabled={ this.state.isValid.email }>
+          <Form.Field className='PasswordField'
+              disabled={ this.state.isValid.email }
+              error={ this.state.isValid.password }>
             <label>Password:</label>
             <Input type='password' onChange={ this.handlePassword }/>
           </Form.Field>
