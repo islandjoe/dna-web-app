@@ -2,6 +2,7 @@ import React, {Component}  from 'react'
 import authenticate from '../Auth'
 import {URL}  from '../data'
 import {Form, Button, Input} from 'semantic-ui-react'
+import './Login.css'
 
 class Login extends Component {
 
@@ -12,8 +13,8 @@ class Login extends Component {
       userid:'',
       password:'',
       isValid: {
-        email: !true,
-        isValidPassword: !true
+        email: false,
+        password: false
       }
     }
 
@@ -27,16 +28,40 @@ class Login extends Component {
     event.preventDefault()
 
     const {userid, password} = this.state
-    const {userId: userIdIs, history: path} = this.props
+    const {userId:  userIdIs,
+           history: path
+          } = this.props
     const authd = authenticate( userid, password )
 
-    if ( authd.subscriber && authd.password ) {
+    if (authd.user && authd.password) {
       userIdIs( userid )
       path.push( URL.subscriber )
     }
-    else if (!authd.password) {
-      this.setState({ isValid: {password: !false} })
+    else {
+      // Is password valid?
+      if (authd.password === false) {
+        this.setState({
+          isValid: {
+            // Display error on password field:
+            password: true
+          }
+        })
+      }
+
+      // Is user valid?
+      if (authd.user === false) {
+        this.setState({
+          isValid: {
+            // Display error on email/password fields:
+            email: true,
+            password: false
+          }
+        })
+      }
+
+
     }
+
   }
 
   handleUserId(event) {
@@ -47,15 +72,19 @@ class Login extends Component {
 
   validate(event) {
     // RFC 5322 Official Standard
-    const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const validFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const input = event.target
 
-    //1. userid is email format
-    if ( input.value.length > 0 && validEmail.test( input.value )) {
-      this.setState({ isValid: { email: !true }})
+    // Userid has a valid format?
+    if (input.value.length > 0 && validFormat.test( input.value )) {
+      this.setState({
+        isValid: { email: !true }
+      })
     }
     else {
-      this.setState({ isValid: { email: !false }})
+      this.setState({
+        isValid: { email: !false }
+      })
       input.focus()
     }
   }
@@ -67,27 +96,34 @@ class Login extends Component {
   }
 
   render() {
+    const _ifEmailIsInvalid = this.state.isValid.email,
+          _ifPasswordIsRejected = this.state.isValid.password
+
     return (
       <Form className='Login' onSubmit={ this.handleSubmit }>
-        <Form.Field className='UserIdField' error={ this.state.isValid.email }>
+
+        <Form.Field className='UserIdField' error={ _ifEmailIsInvalid }>
           <label>User ID:</label>
+
           <Input placeholder='Email'
               value={ this.state.userid }
               onChange={ this.handleUserId }
               onBlur={ this.validate }
               />
-          </Form.Field>
+        </Form.Field>
 
-          <Form.Field className='PasswordField'
-              disabled={ this.state.isValid.email }
-              error={ this.state.isValid.password }>
-            <label>Password:</label>
-            <Input type='password' onChange={ this.handlePassword }/>
-          </Form.Field>
+        <Form.Field className='PasswordField'
+            error={ _ifPasswordIsRejected }
+            disabled={ _ifEmailIsInvalid }
+            >
+          <label>Password:</label>
+
+          <Input type='password' onChange={ this.handlePassword }/>
+        </Form.Field>
 
         <Button type='submit'
               className='LoginButton'
-              disabled={ this.state.isValid.email }>
+              disabled={ _ifEmailIsInvalid }>
           Log In
         </Button>
       </Form>
