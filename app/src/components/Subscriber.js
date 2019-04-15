@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+
 import {subscribers} from '../data'
 
 class Subscriber extends Component {
@@ -22,11 +24,12 @@ class Subscriber extends Component {
   }
 
   render() {
-    return (
-      <h2>{ this.state.name }</h2>
-    )
-
+    return <h2 className='SubscriberName'>{ this.state.name }</h2>
   }
+}
+
+Subscriber.propTypes = {
+  userid: PropTypes.string
 }
 
 export default Subscriber
