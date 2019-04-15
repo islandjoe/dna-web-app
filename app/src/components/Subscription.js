@@ -14,67 +14,64 @@ class Subscription extends Component {
   }
 
   componentDidMount() {
-    const packageId = this.props.match.params.id
-    const subscription = packages.find((p)=>
-      p.id === packageId)
+    const packageId    = this.props.match.params.id
+    const subscription = packages.find((p)=> p.id === packageId)
 
     if (subscription) {
-      this.setState({
-        package: { ...subscription }
-      })
-      this.setState({ package: {...subscription} })
+      this.setState({ package: { ...subscription } })
     }
 
     const subscriber = subscribers.find((s)=> s.userid ===  this.props.userid)
 
     if (subscriber) {
-      this.setState({ subscriber: {...subscriber} })
+      this.setState({ subscriber })
     }
 
   } //componentDidMount
 
    render() {
     const { package: bundle, subscriber: user } = this.state
+    // Hard-code the compared value for now:
+    const { label, value } = (bundle.type === 'Mobile')
+              ? {label: 'Mobile',  value: user.mobile}
+              : {label: 'Address', value: user.address}
 
     return (
       <>
-      <Header>
+      <Header as='h2'>
         { bundle.name }
       </Header>
 
-      <Table>
+      <Table definition >
         <Table.Body>
           <Table.Row>
-            <Table.HeaderCell scope='row'>User Id</Table.HeaderCell>
-            <Table.Cell>
+            <Table.Cell width={2}>
+              User Id
+            </Table.Cell>
+            <Table.Cell width={4}>
               <span className='UserId'>{ user.userid }</span>
             </Table.Cell>
           </Table.Row>
-          {// Hard-code this comparison for now:
-            bundle.type == 'Mobile'
-            ?
-            <Table.Row>
-              <Table.HeaderCell scope='row'>Mobile</Table.HeaderCell>
-              <Table.Cell>
-                <span className='Mobile'>{ user.mobile }</span>
-              </Table.Cell>
-            </Table.Row>
-            :
-            <Table.Row>
-              <Table.HeaderCell scope='row'>Address</Table.HeaderCell>
-              <Table.Cell>
-                <span className='Address'>{ user.address }</span>
-              </Table.Cell>
-            </Table.Row>
-          }
           <Table.Row>
-            <Table.HeaderCell scope='row'>Subscription Type</Table.HeaderCell>
+            <Table.Cell>
+              { label }
+            </Table.Cell>
+            <Table.Cell>
+              <span className={ label }>{ value }</span>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              Subscription Type
+            </Table.Cell>
             <Table.Cell>
               <span className='SubscriptionType'>{ bundle.type }</span>
             </Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.HeaderCell scope='row'>Monthly price</Table.HeaderCell>
+            <Table.Cell>
+              Monthly price
+            </Table.Cell>
             <Table.Cell>
               <span className='MonthlyPrice'>{ `${ bundle.price }€` }</span>
             </Table.Cell>
