@@ -1,7 +1,9 @@
 import React, {Component}  from 'react'
+import {Form, Button, Input} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+
 import authenticate from '../Auth'
 import {URL}  from '../data'
-import {Form, Button, Input} from 'semantic-ui-react'
 import './Login.css'
 
 class Login extends Component {
@@ -40,9 +42,8 @@ class Login extends Component {
     else {
       // Is password valid?
       if (authd.password === false) {
-        this.setState({
-          isValid: {
-            // Display error on password field:
+        this.setState({ isValid: {
+        // Display error on password field:
             password: true
           }
         })
@@ -50,9 +51,8 @@ class Login extends Component {
 
       // Is user valid?
       if (authd.user === false) {
-        this.setState({
-          isValid: {
-            // Display error on email/password fields:
+        this.setState({ isValid: {
+        // Display error on email/password fields:
             email: true,
             password: false
           }
@@ -75,7 +75,7 @@ class Login extends Component {
     const validFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const input = event.target
 
-    // Userid has a valid format?
+    // Userid has valid format?
     if (input.value.length > 0 && validFormat.test( input.value )) {
       this.setState({
         isValid: { email: !true }
@@ -96,7 +96,7 @@ class Login extends Component {
   }
 
   render() {
-    const _ifEmailIsInvalid = this.state.isValid.email,
+    const _ifEmailIsInvalid     = this.state.isValid.email,
           _ifPasswordIsRejected = this.state.isValid.password
 
     return (
@@ -130,6 +130,11 @@ class Login extends Component {
     )
   }
 
+}
+
+Login.propTypes = {
+  userId:  PropTypes.string,
+  history: PropTypes.object
 }
 
 export default Login
