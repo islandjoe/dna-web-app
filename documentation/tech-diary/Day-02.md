@@ -1,3 +1,5 @@
+[To Day 3 →](/documentation/tech-diary/Day-03.md)
+
 ### Login Page
 ![](assets/log-in-page.png)
 
@@ -18,3 +20,5 @@ Check if has fields:
 - Address (*if subscription type is broadband)*
 - Mobile number (*if subscription type is mobile)*
 - Monthly subscription price
+
+[To Day 3 →](/documentation/tech-diary/Day-03.md)
