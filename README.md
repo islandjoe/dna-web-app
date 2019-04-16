@@ -27,5 +27,7 @@
 **Bonus tasks:**
 
 • ~~Create a back-end REST API that returns the items using Node.JS (or other technology).~~ (Not enough time)
+
 • Selected pages are responsive (resizes to desktop, tablet and mobile views).
+
 • Tests
