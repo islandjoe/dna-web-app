@@ -1,4 +1,4 @@
-Dev Journal:
+## Dev Journal:
 
 - [Day 1](documentation/tech-diary/Day-01.md)
 - [Day 2](documentation/tech-diary/Day-02.md)
@@ -21,7 +21,7 @@ Dev Journal:
 - Test cases for the code.
  
 **Additional requirements:**
-- No `create-react-app` was used. Application configured from scratch.
+- No `create-react-app` to be used. Application configured from scratch.
 - ~~For web application it should also **support older browsers** at least to some degree. It can have some finer features missing but it should not break with older browsers. We will test it also on **IE11**.~~
  
 **Bonus tasks:**
