@@ -8,7 +8,7 @@
 - [Day 6](documentation/tech-diary/Day-06.md)
 
 
-**Task:** Create a DNA self-service login page/view and subscription listing.
+**Task:** Create a self-service login page/view and subscription listing using ReactJS.
  
 **Functionality:** 
 - The login page/view accepts an _user id_ (email) and _password_ and has a _submit button_. 
